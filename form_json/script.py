@@ -161,4 +161,4 @@ class FormDataJson:
 
         data = list(itertools.chain(*_data))
 
-        return json.dumps(data)
+        return json.dumps(data, indent=4, sort_keys=True)
