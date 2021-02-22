@@ -39,3 +39,6 @@ Please specify end year:
 - If the script runs successfully, you can find the downloaded pdfs in `irs-search/form-pdf/pdf-downloads`.
 - If the run was not successful, you will get an error message describing the issue
 
+### Tests
+- Run available tests using this command `nose2 -v`
+
