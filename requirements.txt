@@ -5,6 +5,7 @@ cffi==1.14.5
 chardet==4.0.0
 click==7.1.2
 constantly==15.1.0
+coverage==5.4
 cryptography==3.4.6
 cssselect==1.1.0
 hyperlink==21.0.0
@@ -16,6 +17,7 @@ itemadapter==0.2.0
 itemloaders==1.0.4
 jmespath==0.10.0
 lxml==4.6.2
+nose2==0.10.0
 numpy==1.20.1
 packaging==20.9
 pandas==1.2.2
@@ -30,7 +32,6 @@ PyDispatcher==2.0.5
 PyHamcrest==2.0.2
 pyOpenSSL==20.0.1
 pyparsing==2.4.7
-pytest==6.2.2
 python-dateutil==2.8.1
 pytz==2021.1
 queuelib==1.5.0

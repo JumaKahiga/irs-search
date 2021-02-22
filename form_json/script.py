@@ -27,7 +27,7 @@ class FormDataJson:
         return {'desc': url_1, 'asc': url_2}
 
     def _get_extrema(self, df, form_name, max_=True):
-        """Get either maximum or minimum years for a given form name
+        """Get either maximum or minimum year for a given form name
 
         Parameters
         ----------
@@ -40,6 +40,12 @@ class FormDataJson:
         max_ : bool
             If True, it returns maximum year else minimum year
 
+        Returns
+        -------
+        result : dict
+            A dict containing a tuple key of (<form name>, <title>)
+            and a value for either the maximum or minimum year
+
         """
 
         if max_:
@@ -50,6 +56,7 @@ class FormDataJson:
                 ['Product Number', 'Title'])['Revision Date'].min()
 
         result = _result.to_dict()
+
         return result
 
     def _retrieve_html(self, url, form_name):
@@ -71,6 +78,12 @@ class FormDataJson:
         """
 
         page = requests.get(url)
+        if not (200 <= page.status_code <= 299):
+            logger.warning(
+                f'could not retrieve the page this form: {form_name}. The website responded with {page.status_code} : {page.reason}'
+            )
+            return
+
         doc = lh.fromstring(page.content)
 
         tr_elements = doc.xpath('//table[@class="picklist-dataTable"]//tr')
@@ -130,8 +143,10 @@ class FormDataJson:
         desc_df = self._retrieve_html(url=urls.get('desc'),
                                       form_name=form_name)
 
-        asc_result = self._get_extrema(asc_df, form_name, max_=False)
-        desc_result = self._get_extrema(desc_df, form_name)
+        asc_result = self._get_extrema(asc_df, form_name,
+                                       max_=False) if asc_df else None
+        desc_result = self._get_extrema(desc_df,
+                                        form_name) if desc_df else None
 
         if not asc_result and desc_result:
             return []
