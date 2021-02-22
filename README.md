@@ -1,5 +1,8 @@
 # irs-search
-Utilities for searching IRS tax forms
+Utilities for searching IRS tax forms. I built the application or v0 in an afternoon. Hoping to keep improving it based on feedback or my own testing of the app.
+
+### Python Version
+- This application was built using *Python 3.7.3*. However, it should still run on any Python version `=> 3.5`. It would break for versions below 3.5 primarily because of the `type aliases` which were introduced in 3.5.
 
 ### Running Locally
 - Clone the repository to your machine using the following command `git clone https://github.com/JumaKahiga/irs-search.git`
